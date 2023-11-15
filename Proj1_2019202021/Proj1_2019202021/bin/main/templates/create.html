@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 작성폼</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+</head>
+<body>
+<div class="all">
+    <form action="board" method="post">
+        <textarea th:field="${board.title}" style="width: 600px; height: 24px; font-size: 16px;"></textarea>
+        <textarea th:field="${board.contents}" style="width: 600px; height: 400px; font-size: 16px;"></textarea>
+        <input type="file" name="file" id="file" accept="image/*">
+        <div class="btn-write">
+            <button type="submit">전송</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

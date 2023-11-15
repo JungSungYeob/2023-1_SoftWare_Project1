@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Viewer</title>
+    <link rel="stylesheet"type="text/css" th:href="@{/style.css}">
+</head>
+<body>
+    <div class="all">
+        <h1 th:text="${board.title}"></h1>
+        <div class="box" th:text="${board.contents}"></div>
+        <div class="btn-type">
+            <button type="submit" th:onclick="'location.href=\'' + @{update} + '/' + ${board.id} +'\''">수정</button>
+            <button type="submit" th:onclick="location.href='/'">이전으로</button>
+            <form action="" method="post">
+                <button type="submit">삭제</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

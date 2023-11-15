@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Proj1_2019202021</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+</head>
+<body>
+    <div class="all">
+        <h2>Proj1_2019202021</h2>
+        <div class = "btn-write">
+            <button type="submit" th:onclick="'location.href=\'' + @{Upload} + '\''">사진 올리기</button>
+        </div>
+        <div class = "photo-container">
+            <div th:each="board: ${boardList}" class="photo-item" th:onclick="'location.href=\'' + @{ImageView} + '/' + ${board.id} +'\''">
+                <img th:src="@{${board.filePath}}" th:alt="'Photo' +${board.id}">
+                <a width="200" th:text="${board.title}"></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

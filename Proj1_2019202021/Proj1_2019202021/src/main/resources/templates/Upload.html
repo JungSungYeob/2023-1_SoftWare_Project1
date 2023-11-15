@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 작성폼</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+</head>
+<body>
+<div class="all">
+    <h1 th:if="${board.id}">수정</h1>
+    <h1 th:unless="${board.id}">생성</h1>
+
+    <form th:if="${board.id}" th:action="@{'/board/' + ${board.id}}" method="post" enctype="multipart/form-data">
+        <div style="align-items: center; display: flex;">
+            <textarea maxlength="20" style="width: 600px; height: 24px; font-size: 16px;" th:field="${board.title}"></textarea>
+        </div>
+        <div style="align-items: center; display: flex;">
+            <textarea maxlength="100" style="width: 600px; height: 400px; font-size: 16px;" th:field="${board.contents}"></textarea>
+        </div>
+        <input type="hidden" name="_method" value="put"/>
+        <input type="file" name="file" id="file_edit" accept="image/*">
+        <button style="margin-top: 12px;" type="submit" th:onclick="location.href='/'">수정</button>
+    </form>
+
+    <form th:unless="${board.id}" action="board" method="post" enctype="multipart/form-data">
+        <textarea maxlength="20" th:field="${board.title}" style="width: 600px; height: 24px; font-size: 16px;"></textarea>
+        <textarea maxlength="100" th:field="${board.contents}" style="width: 600px; height: 400px; font-size: 16px;"></textarea>
+        <input type="file" name="file" id="file_add" accept="image/*">
+        <div class="btn-write">
+            <button type="submit">전송</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
